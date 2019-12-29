@@ -2,6 +2,7 @@ defmodule HelloWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
+  channel "github:*", HelloWeb.GithubChannel
   # channel "room:*", HelloWeb.RoomChannel
 
   # Socket params are passed from the client and can

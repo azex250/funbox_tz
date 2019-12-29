@@ -20,9 +20,7 @@ defmodule Hello.RequestResolver do
             loop(errors, new_state, subs)
           {:error, req} -> loop([req], state, subs)
         end
-      {:subscribe, pid} ->
-        loop(fallback_queue, state, [pid | subs])
-      {:req_failed, req} -> loop([req | fallback_queue], state, subs)
+      {:subscribe, pid} -> loop(fallback_queue, state, [pid | subs])
       error -> IO.inspect(error)
     end
   end

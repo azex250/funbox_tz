@@ -9,7 +9,9 @@ defmodule Hello.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      HelloWeb.Endpoint
+      HelloWeb.Endpoint,
+      Hello.ElixirServer,
+      Hello.SocketServer
       # Starts a worker by calling: Hello.Worker.start_link(arg)
       # {Hello.Worker, arg},
     ]
