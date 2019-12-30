@@ -1,7 +1,20 @@
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
-import css from "../css/app.css"
+// import css from "../css/app.css"
+import semantic from 'semantic-ui-css/semantic.min.css'
+
+import { Button } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const ReactOnPhoenix = () => <div>This is a React Component!!!</div>
+
+ReactDOM.render(
+    <Button secondary>Secondary</Button>, document.getElementById('mountPoint')
+)
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
