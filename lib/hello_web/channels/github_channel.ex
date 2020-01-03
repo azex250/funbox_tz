@@ -5,12 +5,16 @@ defmodule HelloWeb.GithubChannel do
   end
 
   def handle_in("get_status", %{"stars" => stars}, socket) do
-    push socket, "new_status", %{response: Hello.ElixirServer.state(stars)}
+    IO.puts("sdsd")
+    IO.inspect(stars)
+    response = Hello.Storage.get(stars) |> Hello.Parser.modify_result()
+    push socket, "new_status", %{response: response}
     {:noreply, socket}
   end
 
   def handle_in("get_status", _, socket) do
-    push socket, "new_status", %{response: Hello.ElixirServer.state()}
+    response =  Hello.Storage.get() |> Hello.Parser.modify_result()
+    push socket, "new_status", %{response: response}
     {:noreply, socket}
   end
 end

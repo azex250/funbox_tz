@@ -10,8 +10,8 @@ defmodule Hello.Application do
     children = [
       # Start the endpoint when the application starts
       HelloWeb.Endpoint,
-      Hello.ElixirServer,
-      Hello.SocketServer
+      Hello.Loader,
+      Hello.Storage
       # Starts a worker by calling: Hello.Worker.start_link(arg)
       # {Hello.Worker, arg},
     ]

@@ -55,24 +55,6 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel('github:update', {})
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
-
-let getStatus = function () {
-  channel.push('get_status', {"stars": 1000})
-}
-
-channel.on('new_status', msg => {
-  console.log("get status: ", msg)
-})
-
-channel.on('outdated', _msg => {
-    console.log("outdated")
-    getStatus()
-})
-
-document.getElementById('get_status').onclick = getStatus
+//document.getElementById('get_status').onclick = getStatus
 
 export default socket

@@ -9,6 +9,7 @@ defmodule Hello.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      dialyzer: [plt_add_deps: :transitive],
       deps: deps()
     ]
   end
@@ -40,7 +41,9 @@ defmodule Hello.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.6"},
-      {:earmark, "~> 1.4" }
+      {:earmark, "~> 1.4" },
+      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 end

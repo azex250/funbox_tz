@@ -1,30 +1,28 @@
-// We need to import the CSS so that webpack will load it.
-// The MiniCssExtractPlugin is used to separate it out into
-// its own CSS file.
-// import css from "../css/app.css"
-import semantic from 'semantic-ui-css/semantic.min.css'
+import "phoenix_html"
+import socket from "./socket"
 
-import { Button } from 'semantic-ui-react'
-import { List } from 'semantic-ui-react'
-
-import React from 'react'
 import ReactDOM from 'react-dom'
+import React from 'react'
+import Index from './components/index'
+import {BrowserRouter, useLocation, Route} from "react-router-dom";
 
-const ReactOnPhoenix = () => <div>This is a React Component!!!</div>
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+const IndexPage = () => {
+  let query = useQuery()
+
+  return (
+    <BrowserRouter>
+     <Index stars={query.get("stars")} />
+    </BrowserRouter>
+  )
+}
 
 ReactDOM.render(
-    <Button secondary>Secondary</Button>, document.getElementById('mountPoint')
+  <BrowserRouter>
+    <Route path='/' component={IndexPage} />
+  </BrowserRouter>,
+  document.getElementById('mountPoint')
 )
-
-// webpack automatically bundles all modules in your
-// entry points. Those entry points can be configured
-// in "webpack.config.js".
-//
-// Import dependencies
-//
-import "phoenix_html"
-
-// Import local files
-//
-// Local files can be imported directly using relative paths, for example:
-import socket from "./socket"

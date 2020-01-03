@@ -1,4 +1,6 @@
 defmodule Hello.AsyncUtils do
+  @spec process(list, (any -> any), list, integer) :: list
+
   def process(items, f, acc\\[], parallelism\\25) do
     run = fn
       item -> Task.async(fn -> f.(item) end)

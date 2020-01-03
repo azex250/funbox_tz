@@ -1,8 +1,12 @@
 defmodule Hello.RequestUtils do
+  @type response :: {:ok, HTTPoison.body} | :not_found | :error
+
+  @spec request(url :: String.t, headers :: HTTPoison.headers) :: response
   def request(url, headers \\ []) do
-    IO.puts(url)
-    case HTTPoison.get(url, headers, hackney: [pool: :defaul]) |> extract_body() do
-      {:ok, body} -> {:ok, body}
+    case HTTPoison.get(url, headers) |> extract_body() do
+      {:ok, body} ->
+        IO.inspect(body)
+        {:ok, body}
       {:moved, new_url} -> request(new_url, headers)
       error -> error
     end
