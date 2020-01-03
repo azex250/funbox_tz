@@ -4,9 +4,7 @@ defmodule Hello.RequestUtils do
   @spec request(url :: String.t, headers :: HTTPoison.headers) :: response
   def request(url, headers \\ []) do
     case HTTPoison.get(url, headers) |> extract_body() do
-      {:ok, body} ->
-        IO.inspect(body)
-        {:ok, body}
+      {:ok, body} -> {:ok, body}
       {:moved, new_url} -> request(new_url, headers)
       error -> error
     end

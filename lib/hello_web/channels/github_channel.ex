@@ -5,8 +5,6 @@ defmodule HelloWeb.GithubChannel do
   end
 
   def handle_in("get_status", %{"stars" => stars}, socket) do
-    IO.puts("sdsd")
-    IO.inspect(stars)
     response = Hello.Storage.get(stars) |> Hello.Parser.modify_result()
     push socket, "new_status", %{response: response}
     {:noreply, socket}

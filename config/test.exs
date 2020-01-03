@@ -8,3 +8,5 @@ config :hello, HelloWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+config :hello, :children,
+  enable: false

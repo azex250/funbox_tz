@@ -57,8 +57,6 @@ defmodule Hello.Loader do
   def handle_cast(:fallback, state) do
     case fallback(state.errors, state.store) do
       {:ok, store, errors} ->
-        IO.inspect(state.store |> Enum.filter(fn {_, v} -> v.stars != nil end))
-        IO.inspect(errors)
         Enum.each(state.subs, &(&1.put(store)))
         {:noreply, %{state | errors: errors, store: store}}
       :error -> {:noreply, state}

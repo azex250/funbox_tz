@@ -1,19 +1,13 @@
-# Hello
+# Simple awesome-elixir mirror
 
-To start your Phoenix server:
+## Features
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+1. Get elixir projects list from [awesome-elixir](https://github.com/h4cc/awesome-elixir)
+2. For each project print stars count and days after last commit
+3. Load changes every 24 hours
+4. Loaded changes will be automatically send to front-end
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+## Run application:
+```docker run -p 8080:8080 azzzex/funbox_tz:1.0```
+---
+[awesome-mirror](http://localhost:8080)

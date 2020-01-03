@@ -7,7 +7,6 @@ import socket from "../socket"
 
 class Index extends React.Component {
   constructor(props) {
-    console.log("new stars");
     super(props)
     this.state = {items: []}
 
@@ -20,14 +19,12 @@ class Index extends React.Component {
 
     channel.on(
       'new_status', msg => {
-        console.log(msg);
         this.setState({items: msg.response})
       }
     )
 
     channel.on('outdated', _msg => {
-      console.log(stars);
-      () => channel.push('get_status', stars ? {"stars": stars} : {})
+      channel.push('get_status', stars ? {"stars": stars} : {})
     })
 
     channel.push('get_status', stars ? {"stars": stars} : {})

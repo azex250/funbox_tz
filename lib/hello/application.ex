@@ -6,15 +6,11 @@ defmodule Hello.Application do
   use Application
 
   def start(_type, _args) do
+
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
       HelloWeb.Endpoint,
-      Hello.Loader,
-      Hello.Storage
-      # Starts a worker by calling: Hello.Worker.start_link(arg)
-      # {Hello.Worker, arg},
-    ]
+    ] ++ services()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
@@ -27,5 +23,15 @@ defmodule Hello.Application do
   def config_change(changed, _new, removed) do
     HelloWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp services() do
+    case Application.get_env(:hello, :children)[:enable] do
+      true -> [
+        Application.get_env(:hello, :children)[:loader],
+        Application.get_env(:hello, :children)[:storage]
+      ]
+      false -> []
+    end
   end
 end
