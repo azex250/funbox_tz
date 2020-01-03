@@ -7,7 +7,8 @@
 3. Load changes every 24 hours
 4. Loaded changes will be automatically send to front-end
 
-## Run application:
-```docker run -p 8080:8080 azzzex/funbox_tz:1.0```
----
-[awesome-mirror](http://localhost:8080)
+## Run application
+
+
+1. run command ```docker run -p 8080:8080 azzzex/funbox_tz:1.0```
+2. and go to [your local awesome-mirror](http://localhost:8080)
